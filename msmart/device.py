@@ -181,8 +181,6 @@ class air_conditioning_device(device):
             "refresh - Recieved from {}, {}: {}".format(self.ip, self.id, data.hex()))
         if len(data) > 0:
             response = appliance_response(data)
-            import binascii
-            print(binascii.hexlify(response.data))
             self._defer_update = False
             self._support = True
             if not self._defer_update:
