@@ -104,9 +104,8 @@ class air_conditioning_device(device):
     class fan_speed_enum(Enum):
         Auto = 102
         High = 80
-        Medium = 60
-        Low = 40
-        Silent = 20
+        Medium = 50
+        Low = 30
 
         @staticmethod
         def list():
@@ -182,6 +181,8 @@ class air_conditioning_device(device):
             "refresh - Recieved from {}, {}: {}".format(self.ip, self.id, data.hex()))
         if len(data) > 0:
             response = appliance_response(data)
+            import binascii
+            print(binascii.hexlify(response.data))
             self._defer_update = False
             self._support = True
             if not self._defer_update:
